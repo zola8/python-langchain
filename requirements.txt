@@ -1,5 +1,6 @@
 dotenv
 langchain==1.2.0
 langchain-ollama==1.0.1
-fastapi
+langgraph==1.0.5
+fastapi==0.128.0
 uvicorn

@@ -7,3 +7,4 @@ uvicorn
 langchain-community==0.4.1
 duckduckgo-search
 ddgs
+langchain-mcp-adapters==0.2.1

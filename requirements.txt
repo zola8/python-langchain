@@ -9,3 +9,5 @@ duckduckgo-search
 ddgs
 langchain-mcp-adapters==0.2.1
 fastmcp==2.14.2
+stytch
+sqlalchemy

@@ -4,6 +4,8 @@ import time
 
 import httpx
 import requests
+from langchain_core.messages import SystemMessage, HumanMessage
+from langchain_ollama import ChatOllama
 
 
 def count_https_in_web_pages():
@@ -49,13 +51,23 @@ async def better_count_https_in_web_pages():
     print(f'{count_https/count_http=}')
 
 
+def ask_llm():
+    llm = ChatOllama(model="llama3.2", temperature=0.7)
+    system_msg = SystemMessage("You are a helpful assistant.")
+    human_msg = HumanMessage("Who is Harry Potter?")
+    messages = [system_msg, human_msg]
+    response = llm.invoke(messages)
+    print(response.content)
+
+
 def main():
     import cProfile
     import pstats
 
     with cProfile.Profile() as pr:
-        count_https_in_web_pages()
+        # count_https_in_web_pages()
         # asyncio.run(better_count_https_in_web_pages())
+        ask_llm()
 
     stats = pstats.Stats(pr)
     stats.sort_stats(pstats.SortKey.TIME)
@@ -65,7 +77,6 @@ def main():
 
 if __name__ == '__main__':
     main()
-
 
 # in terminal:
 # snakeviz .\needs_profiling.prof
